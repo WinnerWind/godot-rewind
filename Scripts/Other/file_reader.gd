@@ -40,17 +40,33 @@ var songs_listened_on_most_listened_to_day:Array:
 
 #region Calculation
 func calculate_all():
-	read_data()
-	calculate_number_of_listens_song()
-	calculate_number_of_listens_artist()
-	calculate_most_listened_to_days()
-	calculate_most_listened_to_albums()
-	calculate_songs_in_album()
-	calculate_fully_listened_to_albums()
+	var time_start = Time.get_unix_time_from_system()
+	await read_data()
+	print("Read Data at %s seconds from file loaded"%[Time.get_unix_time_from_system()-time_start])
+	work_status.emit(0)
+	await calculate_number_of_listens_song()
+	print("Number of Lstens by Song at %s seconds"%[Time.get_unix_time_from_system()-time_start])
+	work_status.emit(1)
+	await calculate_number_of_listens_artist()
+	print("Number of listens by artist at %s seconds"%[Time.get_unix_time_from_system()-time_start])
+	work_status.emit(2)
+	await calculate_most_listened_to_days()
+	print("most listened to days at %s seconds"%[Time.get_unix_time_from_system()-time_start])
+	work_status.emit(3)
+	await calculate_most_listened_to_albums()
+	print("most listened to albums at %s seconds"%[Time.get_unix_time_from_system()-time_start])
+	work_status.emit(4)
+	await calculate_songs_in_album()
+	print("calculate songs in albums at %s seconds"%[Time.get_unix_time_from_system()-time_start])
+	work_status.emit(5)
+	await calculate_fully_listened_to_albums()
+	print("calculate fully listened to albums at %s seconds"%[Time.get_unix_time_from_system()-time_start])
+	work_status.emit(6)
 
 signal corrupt_data
 signal invalid_file_type
 signal finished_read_data
+signal work_status(id:int)
 func read_data():
 	if not raw_user_scrobble_data is JSON: #User put some sketchy data in that isn't json
 		invalid_file_type.emit()

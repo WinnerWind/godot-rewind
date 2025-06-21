@@ -43,9 +43,10 @@ func add_year_button():
 #region Data
 func _on_file_dialog_file_selected(path):
 	ScrobbleAnalyzer.year_range = years_array #Sets the year range
+	var time_start = Time.get_unix_time_from_system()
 	ScrobbleAnalyzer.raw_user_scrobble_data = load(path)
-	print(ScrobbleAnalyzer.raw_user_scrobble_data)
-	ScrobbleAnalyzer.calculate_all()
+	print("Loaded file at %s seconds from path selected"%[Time.get_unix_time_from_system()-time_start])
+	await ScrobbleAnalyzer.calculate_all()
 
 func finished_reading_data():
 	import_button.text = "Finished reading your data."
