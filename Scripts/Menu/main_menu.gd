@@ -13,7 +13,7 @@ func _ready():
 	ScrobbleAnalyzer.invalid_file_type.connect(_on_file_type_invalid)
 	ScrobbleAnalyzer.corrupt_data.connect(_on_corrupt_data)
 	ScrobbleAnalyzer.finished_read_data.connect(finished_reading_data)
-	
+	ScrobbleAnalyzer.work_status.connect(_work_status)
 	years_display_spinbox.get_line_edit().text_submitted.connect(add_year)
 	set_years_display_label(years_array)
 	
@@ -61,6 +61,9 @@ func _on_corrupt_data():
 	import_button.text = "Corrupt Data!"
 	await get_tree().create_timer(5.0).timeout
 	import_button.text = "Import JSON"
+
+func _work_status(status:int):
+	pass
 #endregion
 #region Start
 func start_pressed():

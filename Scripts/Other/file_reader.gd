@@ -67,6 +67,7 @@ signal corrupt_data
 signal invalid_file_type
 signal finished_read_data
 signal work_status(id:int)
+
 func read_data():
 	if not raw_user_scrobble_data is JSON: #User put some sketchy data in that isn't json
 		invalid_file_type.emit()
