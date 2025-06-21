@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://mcujlpryqshp"]
+
+[ext_resource type="FontFile" uid="uid://kvykrvm2ccu0" path="res://Assets/Fonts/Peace Sans.otf" id="1_s71gf"]
+
+[sub_resource type="Gradient" id="Gradient_xcbtd"]
+colors = PackedColorArray(0.054902, 0.0117647, 0.0705882, 1, 0.15, 0.021, 0.13925, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s71gf"]
+gradient = SubResource("Gradient_xcbtd")
+fill_from = Vector2(0.380342, 0.538462)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jhw3l"]
+font = ExtResource("1_s71gf")
+font_size = 48
+
+[node name="Listen Counts" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_s71gf")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -158.5
+offset_right = 158.5
+offset_bottom = 34.0
+grow_horizontal = 2
+text = "This has been 
+one hell of a year hasn't it?"
+label_settings = SubResource("LabelSettings_jhw3l")
+horizontal_alignment = 1

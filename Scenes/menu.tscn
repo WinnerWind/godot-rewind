@@ -1,0 +1,264 @@
+[gd_scene load_steps=11 format=3 uid="uid://ci2s4pobtpecl"]
+
+[ext_resource type="Script" uid="uid://bs5efup6gdu43" path="res://Scripts/Menu/main_menu.gd" id="1_bbhdo"]
+[ext_resource type="PackedScene" uid="uid://mcujlpryqshp" path="res://Scenes/2025/Scene1.tscn" id="2_xhh6f"]
+
+[sub_resource type="Animation" id="Animation_4t1i0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animations/Firework Left:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, 40)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Animations/Firework Left:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(424, 1000)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Animations/Firework Left/Trail:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_f08ab"]
+resource_name = "finished_import"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animations/Firework Left:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.466667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(424, 1000), Vector2(424, 100)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Animations/Firework Left/CPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.466667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Animations/Firework Left:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.466667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(4, 40), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Animations/Firework Left/Trail:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.366667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7r70c"]
+_data = {
+&"RESET": SubResource("Animation_4t1i0"),
+&"finished_import": SubResource("Animation_f08ab")
+}
+
+[sub_resource type="Curve" id="Curve_hw52y"]
+_limits = [0.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0, 5), 0.0, 7.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_q8ml1"]
+offsets = PackedFloat32Array(0, 0.697561, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0.686275, 1, 0, 0.517647, 0, 1)
+
+[sub_resource type="Curve" id="Curve_rwjmm"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0.00858369, -0.912088), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_esnk3"]
+_limits = [0.99, 15.0, 0.0, 1.0]
+_data = [Vector2(0, 2), 0.0, 0.0, 0, 0, Vector2(1, 15), 18.2, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_slmra"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, -0.714286), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Menu" type="MarginContainer" node_paths=PackedStringArray("import_button", "start_button", "years_display_label", "years_display_spinbox", "year_remove_checkbox")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 50
+script = ExtResource("1_bbhdo")
+import_button = NodePath("Container/Import Button")
+start_button = NodePath("Container/Start")
+first_scene = ExtResource("2_xhh6f")
+years_display_label = NodePath("Container/Years Display")
+years_display_spinbox = NodePath("Container/Year Container/Years")
+year_remove_checkbox = NodePath("Container/Year Container/CheckBox")
+
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "Open a File"
+position = Vector2i(0, 36)
+size = Vector2i(642, 500)
+force_native = true
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.json")
+use_native_dialog = true
+
+[node name="Container" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Container"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Godot Rewind"
+horizontal_alignment = 1
+text_overrun_behavior = 1
+
+[node name="Info" type="RichTextLabel" parent="Container"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[center][font_size=30] How to generate a copy of your data.[/font_size][/center]
+[url=https://lastfm.ghan.nl/export/]go to this website[/url]"
+
+[node name="Year Container" type="HBoxContainer" parent="Container"]
+layout_mode = 2
+
+[node name="Add Year Button" type="Button" parent="Container/Year Container"]
+layout_mode = 2
+text = "Add/Remove Year"
+
+[node name="Years" type="SpinBox" parent="Container/Year Container"]
+layout_mode = 2
+min_value = 2000.0
+max_value = 2100.0
+value = 2025.0
+
+[node name="CheckBox" type="CheckBox" parent="Container/Year Container"]
+layout_mode = 2
+text = "Remove"
+
+[node name="Years Display" type="Label" parent="Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+text_overrun_behavior = 3
+
+[node name="Import Button" type="Button" parent="Container"]
+layout_mode = 2
+text = "Import JSON"
+
+[node name="Start" type="Button" parent="Container"]
+layout_mode = 2
+text = "Start Rewind"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_7r70c")
+}
+
+[node name="Animations" type="Control" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Firework Left" type="ColorRect" parent="Animations"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = 452.0
+offset_right = 2.0
+offset_bottom = 492.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Animations/Firework Left"]
+emitting = false
+amount = 20
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector2(1, 1)
+spread = 180.0
+initial_velocity_min = 300.0
+initial_velocity_max = 300.0
+radial_accel_min = 150.0
+radial_accel_max = 150.0
+scale_amount_curve = SubResource("Curve_hw52y")
+color = Color(1, 0, 0, 1)
+color_ramp = SubResource("Gradient_q8ml1")
+hue_variation_min = 1.0
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_rwjmm")
+
+[node name="Trail" type="CPUParticles2D" parent="Animations/Firework Left"]
+position = Vector2(0, 40)
+emitting = false
+amount = 30
+scale_amount_min = 4.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_esnk3")
+color = Color(1, 0.47451, 0, 1)
+hue_variation_min = 0.1
+hue_variation_max = 0.1
+hue_variation_curve = SubResource("Curve_slmra")
+
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
+[connection signal="pressed" from="Container/Year Container/Add Year Button" to="." method="add_year_button"]
+[connection signal="pressed" from="Container/Import Button" to="FileDialog" method="show"]
+[connection signal="pressed" from="Container/Start" to="." method="start_pressed"]
