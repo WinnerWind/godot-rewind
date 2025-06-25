@@ -64,6 +64,7 @@ func _on_corrupt_data():
 
 func _work_status(status:int):
 	pass
+	
 #endregion
 #region Start
 func start_pressed():
