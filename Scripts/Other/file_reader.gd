@@ -31,9 +31,13 @@ var most_listened_to_artist_listens:int:
 	get:
 		return artist_listen_counts[0][0]
 
-var most_listened_to_day:StringName:
+var most_listened_to_day_name:StringName:
 	get:
 		return listening_days[0][1]
+
+var most_listened_to_day_count:int:
+	get:
+		return songs_listened_on_most_listened_to_day.size()
 
 var songs_listened_on_most_listened_to_day:Array:
 	get:
