@@ -10,6 +10,7 @@ var artist_listen_counts:Array #Also serves as number of artists uniquely listen
 var album_listen_counts:Array #also serves as number of albums uniquely listened to
 var fully_listened_to_albums:Array #Better way of album_listen_counts
 var listening_days:Array #Also serves as days uniquely listened to
+var listening_months:Array #Also serves as months uniquely listneed to
 
 var songs_in_albums:Dictionary #Tells us the songs in an album in the format album: [songuid,songuid]
 
@@ -38,6 +39,23 @@ var songs_listened_on_most_listened_to_day:Array:
 	get:
 		return listening_days[0][0]
 
+var most_listened_to_month_index:int:
+	get:
+		var returning_value:int
+		var highest_listen_count:int
+		for month:Array in listening_months:
+			if month.size() > highest_listen_count:
+				returning_value = listening_months.find(month)
+				highest_listen_count = month.size()
+		return returning_value
+
+var most_listened_to_month_count:int:
+	get:
+		return listening_months[most_listened_to_month_index].size()
+var most_listened_to_month_name:String:
+	get:
+		var months = ["January", "Feburary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+		return months[most_listened_to_month_index]
 #region Calculation
 func calculate_all():
 	var time_start = Time.get_unix_time_from_system()
@@ -62,6 +80,9 @@ func calculate_all():
 	await calculate_fully_listened_to_albums()
 	print("calculate fully listened to albums at %s seconds"%[Time.get_unix_time_from_system()-time_start])
 	work_status.emit(6)
+	await calculate_songs_in_months()
+	print("calculate songs in months at %s seconds"%[Time.get_unix_time_from_system()-time_start])
+	work_status.emit(7)
 
 signal corrupt_data
 signal invalid_file_type
@@ -148,6 +169,17 @@ func calculate_most_listened_to_days():
 	day_listen_pairs.sort_custom(func(value1,value2): return value1[0].size()>value2[0].size())
 	
 	listening_days = day_listen_pairs
+
+func calculate_songs_in_months():
+	var songs_in_months:Array[Array]
+	songs_in_months.resize(12)
+	for day_data in listening_days:
+		var day:String = day_data[1]
+		var songs:Array = day_data[0]
+		var month = int(day.split("-")[1]) - 1
+		songs_in_months[month].append_array(songs)
+	
+	listening_months = songs_in_months
 
 func calculate_most_listened_to_albums():
 	var number_of_album_listens:Dictionary
