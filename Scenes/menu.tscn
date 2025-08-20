@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://ci2s4pobtpecl"]
+[gd_scene load_steps=12 format=3 uid="uid://ci2s4pobtpecl"]
 
 [ext_resource type="Script" uid="uid://bs5efup6gdu43" path="res://Scripts/Menu/main_menu.gd" id="1_bbhdo"]
+[ext_resource type="Theme" uid="uid://3wbglx17rnvl" path="res://Themes/2025.tres" id="1_cayip"]
 [ext_resource type="PackedScene" uid="uid://mcujlpryqshp" path="res://Scenes/2025/Scene1.tscn" id="2_xhh6f"]
 
 [sub_resource type="Animation" id="Animation_4t1i0"]
@@ -125,16 +126,22 @@ _limits = [-1.0, 1.0, 0.0, 1.0]
 _data = [Vector2(0, -0.714286), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="Menu" type="MarginContainer" node_paths=PackedStringArray("import_button", "start_button", "years_display_label", "years_display_spinbox", "year_remove_checkbox")]
+[node name="BG" type="Panel"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 150
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 150
-theme_override_constants/margin_bottom = 50
+theme = ExtResource("1_cayip")
+theme_type_variation = &"BGPanel"
+
+[node name="Menu" type="MarginContainer" parent="." node_paths=PackedStringArray("import_button", "start_button", "years_display_label", "years_display_spinbox", "year_remove_checkbox")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_bbhdo")
 import_button = NodePath("Container/Import Button")
 start_button = NodePath("Container/Start")
@@ -143,7 +150,7 @@ years_display_label = NodePath("Container/Years Display")
 years_display_spinbox = NodePath("Container/Year Container/Years")
 year_remove_checkbox = NodePath("Container/Year Container/CheckBox")
 
-[node name="FileDialog" type="FileDialog" parent="."]
+[node name="FileDialog" type="FileDialog" parent="Menu"]
 title = "Open a File"
 position = Vector2i(0, 36)
 size = Vector2i(642, 500)
@@ -154,65 +161,65 @@ access = 2
 filters = PackedStringArray("*.json")
 use_native_dialog = true
 
-[node name="Container" type="VBoxContainer" parent="."]
+[node name="Container" type="VBoxContainer" parent="Menu"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="Container"]
+[node name="Title" type="Label" parent="Menu/Container"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-theme_override_font_sizes/font_size = 100
+theme_type_variation = &"H1Label"
 text = "Godot Rewind"
 horizontal_alignment = 1
 text_overrun_behavior = 1
 
-[node name="Info" type="RichTextLabel" parent="Container"]
+[node name="Info" type="RichTextLabel" parent="Menu/Container"]
 layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
 text = "[center][font_size=30] How to generate a copy of your data.[/font_size][/center]
 [url=https://lastfm.ghan.nl/export/]go to this website[/url]"
 
-[node name="Year Container" type="HBoxContainer" parent="Container"]
+[node name="Year Container" type="HBoxContainer" parent="Menu/Container"]
 layout_mode = 2
 
-[node name="Add Year Button" type="Button" parent="Container/Year Container"]
+[node name="Add Year Button" type="Button" parent="Menu/Container/Year Container"]
 layout_mode = 2
 text = "Add/Remove Year"
 
-[node name="Years" type="SpinBox" parent="Container/Year Container"]
+[node name="Years" type="SpinBox" parent="Menu/Container/Year Container"]
 layout_mode = 2
 min_value = 2000.0
 max_value = 2100.0
 value = 2025.0
 
-[node name="CheckBox" type="CheckBox" parent="Container/Year Container"]
+[node name="CheckBox" type="CheckBox" parent="Menu/Container/Year Container"]
 layout_mode = 2
 text = "Remove"
 
-[node name="Years Display" type="Label" parent="Container"]
+[node name="Years Display" type="Label" parent="Menu/Container"]
 layout_mode = 2
 size_flags_horizontal = 3
 text_overrun_behavior = 3
 
-[node name="Import Button" type="Button" parent="Container"]
+[node name="Import Button" type="Button" parent="Menu/Container"]
 layout_mode = 2
 text = "Import JSON"
 
-[node name="Start" type="Button" parent="Container"]
+[node name="Start" type="Button" parent="Menu/Container"]
 layout_mode = 2
 text = "Start Rewind"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Menu"]
 unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_7r70c")
 }
 
-[node name="Animations" type="Control" parent="."]
+[node name="Animations" type="Control" parent="Menu"]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Firework Left" type="ColorRect" parent="Animations"]
+[node name="Firework Left" type="ColorRect" parent="Menu/Animations"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -226,7 +233,7 @@ offset_bottom = 492.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Animations/Firework Left"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Menu/Animations/Firework Left"]
 emitting = false
 amount = 20
 one_shot = true
@@ -246,7 +253,7 @@ hue_variation_min = 1.0
 hue_variation_max = 1.0
 hue_variation_curve = SubResource("Curve_rwjmm")
 
-[node name="Trail" type="CPUParticles2D" parent="Animations/Firework Left"]
+[node name="Trail" type="CPUParticles2D" parent="Menu/Animations/Firework Left"]
 position = Vector2(0, 40)
 emitting = false
 amount = 30
@@ -258,7 +265,7 @@ hue_variation_min = 0.1
 hue_variation_max = 0.1
 hue_variation_curve = SubResource("Curve_slmra")
 
-[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
-[connection signal="pressed" from="Container/Year Container/Add Year Button" to="." method="add_year_button"]
-[connection signal="pressed" from="Container/Import Button" to="FileDialog" method="show"]
-[connection signal="pressed" from="Container/Start" to="." method="start_pressed"]
+[connection signal="file_selected" from="Menu/FileDialog" to="Menu" method="_on_file_dialog_file_selected"]
+[connection signal="pressed" from="Menu/Container/Year Container/Add Year Button" to="Menu" method="add_year_button"]
+[connection signal="pressed" from="Menu/Container/Import Button" to="Menu/FileDialog" method="show"]
+[connection signal="pressed" from="Menu/Container/Start" to="Menu" method="start_pressed"]

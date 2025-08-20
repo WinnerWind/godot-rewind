@@ -1,0 +1,28 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://3wbglx17rnvl"]
+
+[ext_resource type="StyleBox" uid="uid://d1stdy3anqgj0" path="res://BGs/2025_dark_panel.tres" id="1_aqbkb"]
+[ext_resource type="FontFile" uid="uid://mbgcjmyq21oq" path="res://Assets/Fonts/Space Grotesk.ttf" id="2_fa01u"]
+[ext_resource type="FontFile" uid="uid://kvykrvm2ccu0" path="res://Assets/Fonts/Peace Sans.otf" id="3_ruved"]
+
+[resource]
+BGPanel/base_type = &"Panel"
+BGPanel/styles/panel = ExtResource("1_aqbkb")
+Button/fonts/font = ExtResource("2_fa01u")
+H1Label/base_type = &"Label"
+H1Label/font_sizes/font_size = 64
+H1Label/fonts/font = ExtResource("3_ruved")
+H2Label/base_type = &"Label"
+H2Label/font_sizes/font_size = 40
+H2Label/fonts/font = ExtResource("3_ruved")
+Label/fonts/font = ExtResource("2_fa01u")
+LineEdit/fonts/font = ExtResource("2_fa01u")
+MarginContainer/constants/margin_bottom = 50
+MarginContainer/constants/margin_left = 150
+MarginContainer/constants/margin_right = 150
+MarginContainer/constants/margin_top = 50
+RichTextLabel/fonts/normal_font = ExtResource("2_fa01u")
+ScrollerMarginContainer/base_type = &"MarginContainer"
+ScrollerMarginContainer/constants/margin_bottom = 150
+ScrollerMarginContainer/constants/margin_left = 0
+ScrollerMarginContainer/constants/margin_right = 0
+ScrollerMarginContainer/constants/margin_top = 150

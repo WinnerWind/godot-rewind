@@ -1,0 +1,8 @@
+[gd_resource type="GradientTexture2D" load_steps=2 format=3 uid="uid://bakwavdac4ctg"]
+
+[sub_resource type="Gradient" id="Gradient_xcbtd"]
+colors = PackedColorArray(0.054902, 0.0117647, 0.0705882, 1, 0.15, 0.021, 0.13925, 1)
+
+[resource]
+gradient = SubResource("Gradient_xcbtd")
+fill_from = Vector2(0.380342, 0.538462)

@@ -1,147 +1,74 @@
-[gd_scene load_steps=9 format=3 uid="uid://mcujlpryqshp"]
+[gd_scene load_steps=7 format=3 uid="uid://mcujlpryqshp"]
 
-[ext_resource type="FontFile" uid="uid://kvykrvm2ccu0" path="res://Assets/Fonts/Peace Sans.otf" id="1_s71gf"]
-
-[sub_resource type="Gradient" id="Gradient_xcbtd"]
-colors = PackedColorArray(0.054902, 0.0117647, 0.0705882, 1, 0.15, 0.021, 0.13925, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_s71gf"]
-gradient = SubResource("Gradient_xcbtd")
-fill_from = Vector2(0.380342, 0.538462)
-
-[sub_resource type="LabelSettings" id="LabelSettings_jhw3l"]
-font = ExtResource("1_s71gf")
-font_size = 48
-
-[sub_resource type="LabelSettings" id="LabelSettings_s71gf"]
-font = ExtResource("1_s71gf")
-font_size = 72
-
-[sub_resource type="Animation" id="Animation_jhw3l"]
-resource_name = "default"
-length = 5.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Title:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(250, -72), Vector2(250, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Title:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.766667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.4, 0.4), Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Top:position")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.9, 1.4, 1.9, 2.76667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(100, 750), Vector2(199, 160), Vector2(210, 170), Vector2(350, 750)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Top:rotation")
-tracks/3/interp = 2
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.9, 2.76667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-0.523599, 0.523599]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Artist:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(1.16667, 1.86667, 2.3, 3.03333),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(450, 750), Vector2(600, 160), Vector2(700, 170), Vector2(750, 750)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Artist:rotation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(1.16667, 2.96667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-0.523599, 0.523599]
-}
+[ext_resource type="Script" uid="uid://qb4u1mg2w68a" path="res://Scripts/Other/rewind_main.gd" id="1_jhw3l"]
+[ext_resource type="Theme" uid="uid://3wbglx17rnvl" path="res://Themes/2025.tres" id="1_ragbr"]
+[ext_resource type="Script" uid="uid://dr2uvav1t4dko" path="res://Scripts/Other/autoscroll.gd" id="3_ragbr"]
 
 [sub_resource type="Animation" id="Animation_ragbr"]
 length = 0.001
-tracks/0/type = "value"
+tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Title:position")
+tracks/0/path = NodePath("Title:position:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(250, 0)]
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Title:scale")
+tracks/1/path = NodePath("MainContent/ScrollContainer:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Color(1, 1, 1, 1)]
 }
-tracks/2/type = "value"
+
+[sub_resource type="Animation" id="Animation_jhw3l"]
+resource_name = "default"
+length = 15.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-100, -0.25, 0, 0.25, 0, 0, -1, 58.5, 0.25, 0, -107.5, -0.0803657, 99, 0.241509, -56),
+"times": PackedFloat32Array(0.0333334, 2, 4.06667)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainContent/ScrollContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.96667, 4.56667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Top:position")
+tracks/2/path = NodePath("MainContent/ScrollContainer")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(3.46667),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(199, 70)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Top:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"values": [{
+"args": [],
+"method": &"begin_scroll"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l2gm1"]
@@ -150,13 +77,18 @@ _data = {
 &"default": SubResource("Animation_jhw3l")
 }
 
-[node name="Listen Counts" type="TextureRect"]
+[node name="Listen Counts" type="Panel" node_paths=PackedStringArray("labels_to_replace_in", "icons_to_replace")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_s71gf")
+theme = ExtResource("1_ragbr")
+theme_type_variation = &"BGPanel"
+script = ExtResource("1_jhw3l")
+debug = true
+labels_to_replace_in = [NodePath("MainContent/ScrollContainer/Sorter/Month/Label"), NodePath("MainContent/ScrollContainer/Sorter/Song/Label"), NodePath("MainContent/ScrollContainer/Sorter/Artist/Label"), NodePath("MainContent/ScrollContainer/Sorter/Day/Label")]
+icons_to_replace = [NodePath("MainContent/ScrollContainer/Sorter/Song/most_listened_to_song_icon_url")]
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
@@ -165,41 +97,10 @@ anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -326.0
 offset_right = 326.0
-offset_bottom = 68.0
+offset_bottom = 90.0
 grow_horizontal = 2
-text = "This year, say hello to your"
-label_settings = SubResource("LabelSettings_jhw3l")
-horizontal_alignment = 1
-
-[node name="Top" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -377.0
-offset_top = 70.0
-offset_right = -60.0
-offset_bottom = 171.0
-grow_horizontal = 2
-pivot_offset = Vector2(158.5, 50.5)
-text = "Top"
-label_settings = SubResource("LabelSettings_s71gf")
-horizontal_alignment = 1
-
-[node name="Artist" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -126.0
-offset_top = 750.0
-offset_right = 191.0
-offset_bottom = 851.0
-grow_horizontal = 2
-rotation = -0.523599
-pivot_offset = Vector2(158.5, 50.5)
-text = "Artist"
-label_settings = SubResource("LabelSettings_s71gf")
+theme_type_variation = &"H1Label"
+text = "Your Stats"
 horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -207,3 +108,116 @@ libraries = {
 &"": SubResource("AnimationLibrary_l2gm1")
 }
 autoplay = "default"
+
+[node name="MainContent" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"ScrollerMarginContainer"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainContent"]
+layout_mode = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
+script = ExtResource("3_ragbr")
+horizontal_scroll_time = 10.0
+
+[node name="Sorter" type="HBoxContainer" parent="MainContent/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Song" type="VBoxContainer" parent="MainContent/ScrollContainer/Sorter"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="Header" type="Label" parent="MainContent/ScrollContainer/Sorter/Song"]
+layout_mode = 2
+theme_type_variation = &"H2Label"
+text = "Most Listened to Song"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Label" type="Label" parent="MainContent/ScrollContainer/Sorter/Song"]
+layout_mode = 2
+text = "{most_listened_to_song_name} listened to {most_listened_to_song_listens} times"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="most_listened_to_song_icon_url" type="TextureRect" parent="MainContent/ScrollContainer/Sorter/Song"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_vertical = 3
+expand_mode = 5
+stretch_mode = 3
+
+[node name="Artist" type="VBoxContainer" parent="MainContent/ScrollContainer/Sorter"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="Header" type="Label" parent="MainContent/ScrollContainer/Sorter/Artist"]
+layout_mode = 2
+theme_type_variation = &"H2Label"
+text = "Most Listened to Artist"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Label" type="Label" parent="MainContent/ScrollContainer/Sorter/Artist"]
+layout_mode = 2
+text = "{most_listened_to_artist_name} listened to {most_listened_to_artist_listens} times"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Month" type="VBoxContainer" parent="MainContent/ScrollContainer/Sorter"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="Header" type="Label" parent="MainContent/ScrollContainer/Sorter/Month"]
+layout_mode = 2
+theme_type_variation = &"H2Label"
+text = "Most Listened to Month"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Label" type="Label" parent="MainContent/ScrollContainer/Sorter/Month"]
+layout_mode = 2
+text = "{most_listened_to_month_name}, where you listened to {most_listened_to_month_count} songs."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Day" type="VBoxContainer" parent="MainContent/ScrollContainer/Sorter"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="Header" type="Label" parent="MainContent/ScrollContainer/Sorter/Day"]
+layout_mode = 2
+theme_type_variation = &"H2Label"
+text = "Most Listened to Day"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Label" type="Label" parent="MainContent/ScrollContainer/Sorter/Day"]
+layout_mode = 2
+text = "{most_listened_to_day_name}, where you listened to {most_listened_to_day_count} songs."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="MainContent/ScrollContainer/Sorter"]
+layout_mode = 2
+text = "Return
+To
+Main
+Scene"
+
+[connection signal="pressed" from="MainContent/ScrollContainer/Sorter/Button" to="." method="_return_to_main_menu"]
