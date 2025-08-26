@@ -1,2 +1,2 @@
 # Godot Rewind
-A simple Spotify Rewind like client for Godot
+A simple Spotify Rewind like client for Godot using LastFM
